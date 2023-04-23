@@ -1,0 +1,6 @@
+joblib
+spacy
+scikit-learn
+memory-profiler
+flask
+flask_cors
