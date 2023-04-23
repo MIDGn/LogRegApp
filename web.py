@@ -1,18 +1,11 @@
-"""regular expressions"""
+"""Libraries and metrics"""
 import re
-"""importing pre-trained model and vector object"""
-import joblib
-"""importing language model for preprocessing"""
-import spacy
-"""time metric"""
 import time
-"""memory metric"""
+import joblib
+import spacy
 import memory_profiler
-"""Flask for creating web app"""
 from flask import Flask, request, render_template
 from flask_cors import CORS
-"""CountVectorizer to transofrm text"""
-from sklearn.feature_extraction.text import CountVectorizer
 
 app = Flask(__name__)
 CORS(app)
@@ -54,9 +47,9 @@ def home():
         end_time = time.time()
         proc_time = round((end_time - start_time), 5)
         mem_usage_diff = round((memory_profiler.memory_usage()[0] - mem_usage), 5)
-        return render_template("result.html", pred=pred, proba=[prob_fake, prob_true], text=text, proc_time=proc_time, mem_usage=mem_usage_diff)
-    else:
-        return render_template("home.html")
+        return render_template("result.html", pred=pred, proba=[prob_fake, prob_true], text=text,
+                                proc_time=proc_time, mem_usage=mem_usage_diff)
+    return render_template("home.html")
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
