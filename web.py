@@ -43,7 +43,7 @@ def home():
         pred, proba = predict_text(text)
         pred = 'True' if pred == 1 else 'Fake'
         prob_true = f"{proba[0][1]:.4f}"
-        prob_fake = f"{proba[0][1]:.4f}"
+        prob_fake = f"{proba[0][0]:.4f}"
         end_time = time.time()
         proc_time = round((end_time - start_time), 5)
         mem_usage_diff = round((memory_profiler.memory_usage()[0] - mem_usage), 5)
